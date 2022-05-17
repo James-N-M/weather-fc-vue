@@ -1,26 +1,6 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="columns">
-    <aside
-      class="column is-one-quarter aside hero is-fullheight has-background-dark"
-    >
-      <div class="is-flex is-justify-content-space-around">
-        <button class="button">Search</button>
-        <button class="button">Location</button>
-      </div>
-      <div>
-        <figure class="image">
-          <img src="https://bulma.io/images/placeholders/256x256.png" />
-        </figure>
-      </div>
-      <div class="has-text-centered has-text-white">
-        <div>15°</div>
-        <div>Shower</div>
-        <div>Today - Fri, 14, May</div>
-        <div>Windsor Ontario</div>
-      </div>
-    </aside>
+    <SidePanel :forecast="forecast" />
     <div class="column">
       <div class="container">
         <div class="is-flex is-justify-content-right">
@@ -110,3 +90,21 @@
     </div>
   </div>
 </template>
+<script lang="ts">
+import { defineComponent } from "vue";
+import type WeatherForecast from "./types";
+import WeatherForecastService from "./services/WeatherForecastService";
+import SidePanel from "./components/SidePanel.vue";
+export default defineComponent({
+  data() {
+    return {
+      forecast: {} as WeatherForecast,
+    };
+  },
+  methods: {},
+  async created() {
+    this.forecast = await WeatherForecastService.getWeatherForecast();
+  },
+  components: { SidePanel },
+});
+</script>
