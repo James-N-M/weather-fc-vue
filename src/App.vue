@@ -62,23 +62,25 @@
                 <div class="tile is-parent is-vertical">
                   <article class="tile is-child notification is-primary">
                     <p class="title">Wind status</p>
-                    <p class="subtitle">7mph</p>
+                    <p class="subtitle">{{ forecast.wind?.speed }}mph</p>
                   </article>
                   <article class="tile is-child notification is-warning">
                     <p class="title">Visibility</p>
-                    <p class="subtitle">6.4 miles</p>
+                    <p class="subtitle">{{ forecast.visibility }} miles</p>
                   </article>
                 </div>
                 <div class="tile is-parent">
                   <article class="tile is-child notification is-info">
                     <p class="title">Humidity</p>
-                    <p class="has-text-centered">84%</p>
+                    <p class="has-text-centered">
+                      {{ forecast.main?.humidity }}%
+                    </p>
                     <progress
                       class="progress is-warning is-large"
-                      value="84"
+                      :value="forecast.main?.humidity"
                       max="100"
                     >
-                      84%
+                      {{ forecast.main?.humidity }}%
                     </progress>
                   </article>
                 </div>
@@ -92,13 +94,13 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import type WeatherForecast from "./types";
 import WeatherForecastService from "./services/WeatherForecastService";
 import SidePanel from "./components/SidePanel.vue";
+import type { Forecast } from "./types/forecast";
 export default defineComponent({
   data() {
     return {
-      forecast: {} as WeatherForecast,
+      forecast: {} as Forecast,
     };
   },
   methods: {},
