@@ -3,8 +3,8 @@
     class="column is-one-quarter aside hero is-fullheight has-background-dark"
   >
     <div class="is-flex is-justify-content-space-around">
-      <button class="button">Search</button>
-      <button class="button">Location</button>
+      <app-button :action="'Search'"> </app-button>
+      <app-button :action="'Location'"> </app-button>
     </div>
     <div>
       <figure class="image">
@@ -23,6 +23,7 @@
 <script lang="ts">
 import type { Forecast } from "@/types/forecast";
 import { defineComponent, type PropType } from "vue";
+import AppButton from "./AppButton.vue";
 
 export default defineComponent({
   props: {
@@ -31,5 +32,6 @@ export default defineComponent({
   data() {
     return {};
   },
+  components: { AppButton },
 });
 </script>

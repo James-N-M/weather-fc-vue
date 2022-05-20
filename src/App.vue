@@ -1,11 +1,11 @@
 <template>
-  <div class="columns">
+  <div class="columns" v-if="!loading">
     <SidePanel :forecast="forecast" />
     <div class="column">
       <div class="container">
         <div class="is-flex is-justify-content-right">
-          <button>C°</button>
-          <button>F°</button>
+          <app-button :action="'C°'"></app-button>
+          <app-button :action="'F°'"></app-button>
         </div>
         <div class="tile is-ancestor has-text-centered">
           <div class="tile is-parent">
@@ -96,17 +96,22 @@
 import { defineComponent } from "vue";
 import WeatherForecastService from "./services/WeatherForecastService";
 import SidePanel from "./components/SidePanel.vue";
+import AppButton from "./components/AppButton.vue";
 import type { Forecast } from "./types/forecast";
 export default defineComponent({
   data() {
     return {
       forecast: {} as Forecast,
+      loading: true,
     };
   },
   methods: {},
   async created() {
-    this.forecast = await WeatherForecastService.getWeatherForecast();
+    WeatherForecastService.getWeatherForecast().then((response: Forecast) => {
+      this.loading = false;
+      this.forecast = response;
+    });
   },
-  components: { SidePanel },
+  components: { SidePanel, AppButton },
 });
 </script>
