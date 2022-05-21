@@ -5,5 +5,5 @@ defineProps<{
 </script>
 
 <template>
-  <button class="button">{{ action }}</button>
+  <button class="button is-primary">{{ action }}</button>
 </template>

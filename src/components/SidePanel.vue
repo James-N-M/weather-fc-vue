@@ -12,6 +12,7 @@
       </figure>
     </div>
     <div class="has-text-centered has-text-white">
+      <div> {{ forecast?.main.temp }}°</div>
       <div>{{ forecast?.weather[0].main }}</div>
       <div>Today - Fri, 14, May</div>
       <!-- <div>{{ forecast }}</div> -->
