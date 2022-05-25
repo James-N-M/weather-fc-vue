@@ -6,13 +6,11 @@
       <app-button :action="'Search'"> </app-button>
       <app-button :action="'Location'"> </app-button>
     </div>
-    <div>
-      <figure class="image">
-        <img src="https://bulma.io/images/placeholders/256x256.png" />
-      </figure>
+    <div class="is-flex is-justify-content-center">
+      <img src="@/assets/weather-images/Clear.png" />
     </div>
     <div class="has-text-centered has-text-white">
-      <div> {{ forecast?.main.temp }}°</div>
+      <div>{{ forecast?.main.temp }}°</div>
       <div>{{ forecast?.weather[0].main }}</div>
       <div>Today - Fri, 14, May</div>
       <!-- <div>{{ forecast }}</div> -->

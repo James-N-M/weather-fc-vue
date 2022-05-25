@@ -28,7 +28,16 @@ export default defineComponent({
       loading: true,
     };
   },
-  methods: {},
+  methods: {
+    weatherImage() {
+      return {
+        Mist: "Cloud-background.png",
+        Clear: "Clear.png",
+        Clouds: "LightCloud.png",
+        Rain: "LightRain",
+      };
+    },
+  },
   async created() {
     WeatherForecastService.getWeatherForecast().then((response: Forecast) => {
       this.loading = false;
