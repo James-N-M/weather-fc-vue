@@ -7,13 +7,16 @@
       <app-button :action="'Location'"> </app-button>
     </div>
     <div class="is-flex is-justify-content-center">
-      <img src="@/assets/weather-images/Clear.png" />
+      <img
+        :src="
+          '/src/assets/weather-images/' + forecast?.weather[0]?.main + '.png'
+        "
+      />
     </div>
     <div class="has-text-centered has-text-white">
       <div>{{ forecast?.main.temp }}°</div>
       <div>{{ forecast?.weather[0].main }}</div>
       <div>Today - Fri, 14, May</div>
-      <!-- <div>{{ forecast }}</div> -->
       <div>{{ forecast?.name }}</div>
     </div>
   </aside>

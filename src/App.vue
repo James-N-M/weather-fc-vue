@@ -21,28 +21,29 @@ import AppButton from "./components/AppButton.vue";
 import type { Forecast } from "./types/forecast";
 import ForecastTiles from "./components/ForecastTiles.vue";
 import MiscTiles from "./components/MiscTiles.vue";
+import type { ForecastList } from "./types/forecast-list";
 export default defineComponent({
   data() {
     return {
       forecast: {} as Forecast,
+      fiveDayForecast: {} as ForecastList,
       loading: true,
     };
   },
-  methods: {
-    weatherImage() {
-      return {
-        Mist: "Cloud-background.png",
-        Clear: "Clear.png",
-        Clouds: "LightCloud.png",
-        Rain: "LightRain",
-      };
-    },
-  },
+  methods: {},
   async created() {
-    WeatherForecastService.getWeatherForecast().then((response: Forecast) => {
-      this.loading = false;
-      this.forecast = response;
-    });
+    WeatherForecastService.currentWeather(42.33143, -83.04575).then(
+      (response: Forecast) => {
+        this.loading = false;
+        this.forecast = response;
+      }
+    );
+
+    WeatherForecastService.fiveDayWeatherForecast(42.33143, -83.04575).then(
+      (response: ForecastList) => {
+        this.fiveDayForecast = response;
+      }
+    );
   },
   components: { SidePanel, AppButton, ForecastTiles, MiscTiles },
 });
