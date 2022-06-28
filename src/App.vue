@@ -3,10 +3,12 @@
     <SidePanel :forecast="today" />
     <div class="column">
       <div class="container">
-        <div class="is-flex is-justify-content-right">
-          <app-button class="mr-4" :action="'C°'"></app-button>
-          <app-button :action="'F°'"></app-button>
-        </div>
+        <section class="hero is-success mb-4">
+          <div class="hero-body is-flex is-justify-content-flex-end">
+            <app-button class="mr-4" :action="'C°'"></app-button>
+            <app-button :action="'F°'"></app-button>
+          </div>
+        </section>
         <ForecastTiles :fiveDayForecast="fiveDayForecast" />
         <MiscTiles :forecast="today" />
       </div>

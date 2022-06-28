@@ -5,12 +5,14 @@
       :key="index"
       class="tile is-parent"
     >
-      <article class="tile is-child box">
-        <p class="title">{{ day.dt }}</p>
+      <article class="tile is-child box has-background-dark">
+        <p class="title has-text-white">{{ day.dt }}</p>
         <figure class="image is-4by3">
-          <img src="https://bulma.io/images/placeholders/640x480.png" />
+          <img
+            :src="'/src/assets/weather-images/' + day.weather[0]?.main + '.png'"
+          />
         </figure>
-        <p class="subtitle">
+        <p class="subtitle has-text-white">
           {{ Math.floor(day.temp.max) }}°F {{ Math.floor(day.temp.min) }}°F
         </p>
       </article>
